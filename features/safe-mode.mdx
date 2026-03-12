@@ -1,0 +1,57 @@
+---
+title: "Safe Mode"
+description: "Reduce the risk of accidental destructive changes in PoliteDB"
+---
+
+**Safe Mode** is a way to use PoliteDB more cautiously, especially when you are connected to sensitive or production databases.
+
+When Safe Mode is enabled, the app treats potentially destructive operations more carefully and encourages you to double‑check what you are about to do.
+
+## What Safe Mode is for
+
+Safe Mode is designed to:
+
+- Make it harder to accidentally run destructive statements (for example, dropping tables or truncating data).
+- Encourage you to review schema changes and bulk updates before they are applied.
+- Provide extra confirmation steps when you are performing high‑impact actions.
+
+It is especially useful when:
+
+- Working against production or business‑critical databases.
+- Pairing or reviewing work where multiple people may be running queries from the same environment.
+- Exploring unfamiliar schemas where the impact of a change is not yet clear.
+
+## Typical behavior
+
+In Safe Mode, you can expect PoliteDB to:
+
+- Highlight or clearly label destructive actions in menus and dialogs.
+- Ask for explicit confirmation before running operations that:
+  - Drop or truncate tables.
+  - Rewrite large portions of data.
+  - Apply structural changes to schemas.
+- Encourage you to review generated SQL or summaries of changes before they are executed.
+
+Safe Mode is not about blocking every write; it is about slowing you down slightly for operations that are hard or impossible to undo.
+
+## Enabling and disabling Safe Mode
+
+Safe Mode is typically **off by default** so you can work quickly in development and test environments.
+
+You can turn it on when you need extra protection, for example:
+
+- Before connecting to a production database.
+- At the start of a session where you know you will be reviewing or auditing changes.
+
+Once enabled, Safe Mode applies across the relevant parts of the app until you explicitly turn it off again.
+
+## Best practices
+
+To get the most value from Safe Mode:
+
+- Treat it as a standard part of your workflow for production and regulated environments.
+- Combine it with backups and query history so you can verify and, when necessary, recover from changes.
+- Leave it off in ephemeral or local environments where you are intentionally moving fast and the cost of mistakes is low.
+
+Safe Mode is one layer in a broader safety story that also includes permissions, backups, and careful review of generated SQL.
+

@@ -1,0 +1,39 @@
+---
+title: "Backup and restore"
+description: "Protect and recover your data from within PoliteDB"
+---
+
+PoliteDB includes **backup and restore** features so you can protect critical data and recover quickly when needed.
+
+The exact options available depend on your database engine and the permissions granted to your connection.
+
+## Backing up data
+
+From within a connection workspace you can:
+
+- Start backups at the database or table level, depending on what your engine supports.
+- Choose where to store backup artifacts (for example, a file path or storage location).
+- Monitor the progress of backup operations from the same environment where you run queries.
+
+Backups are intended to be predictable and repeatable, so you can integrate them into your broader operations routine.
+
+## Restoring from backups
+
+When you need to restore:
+
+- Select a backup artifact from a list or file picker.
+- Choose the target (database, schema, or table) where the restore should be applied.
+- Confirm the operation after reviewing any warnings about potential data overwrites.
+
+PoliteDB surfaces clear prompts and confirmations to minimize accidental destructive actions.
+
+## Safety considerations
+
+Because backup and restore can change large amounts of data, keep in mind:
+
+- Always verify that you are connected to the correct environment before running a restore.
+- Prefer practicing restores in lower environments before applying them to production.
+- Combine backups with query history and workspace features to verify that data looks correct after a restore.
+
+Used carefully, these tools make it easier to manage the full lifecycle of your databases from a single interface.
+

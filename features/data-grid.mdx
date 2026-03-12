@@ -1,0 +1,41 @@
+---
+title: "Data Grid"
+description: "Browse and inspect table data in PoliteDB"
+---
+
+The **datagrid** is where PoliteDB displays rows from your tables.
+
+It is built for quick inspection, navigation, and light data exploration rather than heavy reporting.
+
+## Opening the datagrid
+
+You typically reach the datagrid by:
+
+- Selecting a table from the schema navigator.
+- Choosing an action such as “open data” or an equivalent from context menus.
+
+PoliteDB opens a new window in the workspace that focuses on that table’s data.
+
+## Reading data
+
+The datagrid shows:
+
+- A header row with column names that match your table schema.
+- A scrollable list of rows, with virtualized rendering for large tables.
+- Basic indicators for things like nulls or truncated values, depending on the column type.
+
+Use the datagrid for:
+
+- Spot‑checking recent changes.
+- Verifying that filters and joins behave as expected.
+- Exploring unfamiliar tables before writing more complex SQL.
+
+## Navigation and pagination
+
+Large tables are split into pages so you stay responsive:
+
+- Pagination controls (for example, page numbers or next/previous buttons) let you move through the data.
+- You can adjust the page size when you need a broader or narrower view.
+
+Combined with filtering, this helps you focus on the most relevant slice of data without overwhelming the UI.
+

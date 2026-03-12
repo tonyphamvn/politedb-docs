@@ -1,80 +1,71 @@
 ---
 title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+description: "Install, run, and explore PoliteDB in a few minutes"
 ---
 
-## Get started in three steps
+This guide walks you through installing PoliteDB on macOS and connecting to your first database.
 
-Get your documentation site running locally and make your first customization.
+## 1. Check requirements
 
-### Step 1: Set up your local environment
+PoliteDB is a native desktop app that currently targets macOS:
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+- **Operating system**: macOS 12 Monterey or later
+- **Architecture**: Apple Silicon (arm64) or Intel (x64)
+- **Memory**: 4 GB RAM minimum (8 GB recommended)
+- **Disk space**: At least 200 MB free
+- **Network**: Internet connection for downloading the app and activating licenses
 
-### Step 2: Deploy your changes
+All database credentials are stored securely in your **macOS Keychain**, and PoliteDB works in a **local‑first, offline‑friendly** way once installed.
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+## 2. Download PoliteDB
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+You can always get the latest builds from:
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+- The [**Download** page](https://politedb.pages.dev/download)
+- The [**GitHub Releases** page](https://github.com/politehq/politedb/releases)
 
-### Step 3: Go live
+On the download page you’ll see macOS installers for:
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+- **Apple Silicon**: `PoliteDB_0.1.0_arm64.dmg`
+- **Intel**: `PoliteDB_0.1.0_x64.dmg`
+
+Choose the variant that matches your Mac’s CPU.
+
+## 3. Install on macOS
+
+1. Open the downloaded `.dmg` file.
+2. Drag **PoliteDB** into your `Applications` folder.
+3. Eject the PoliteDB disk image.
+4. Launch **PoliteDB** from Spotlight or the Applications folder.
+
+If macOS warns that the app is from the internet, choose **Open** to continue.
+
+## 4. Create your first connection
+
+When PoliteDB opens:
+
+1. Click **New connection** (or the equivalent action on the home screen).
+2. Pick a **database engine**. PoliteDB supports:
+   - PostgreSQL
+   - MySQL
+   - Redis
+3. Fill in the connection details (host, port, database, username, and authentication).
+4. Save the profile, then click **Open** to launch a workspace tab for that connection.
+
+Your passwords and secrets are stored in the **macOS Keychain**, never in plain text. PoliteDB does not phone home with your connection details.
+
+## 5. Run your first query
+
+Inside a connection workspace:
+
+1. Open a **SQL editor** tab.
+2. Type a query (for example, `SELECT 1;` on PostgreSQL or MySQL).
+3. Press the run shortcut or click the **Run** button.
+
+You’ll see results inline in the workspace, with history so you can quickly re‑run previous queries.
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+- Learn how **connections** are modeled in the app in the [Connections guide](/essentials/connections).
+- See how the **keychain** keeps your secrets safe in the [Keychain guide](/essentials/keychain).
+- Explore the full **workspace layout** in [Workspace internals](/essentials/workspace).

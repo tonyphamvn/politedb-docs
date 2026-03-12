@@ -1,0 +1,38 @@
+---
+title: "Query History"
+description: "Track and reuse the queries you run in PoliteDB"
+---
+
+PoliteDB keeps a **query history** so you can revisit and reuse the statements you have already executed.
+
+History is scoped to each connection tab, giving you the right context for the database you are working on.
+
+## Where history appears
+
+In a connection workspace, the history is usually shown in a dedicated panel:
+
+- It can appear as a bottom pane, a side panel, or both, depending on your layout.
+- Entries are ordered by time, with the most recent queries at the top.
+- Each entry shows the statement text and basic metadata such as when it was run.
+
+This makes it easy to scan what you have been doing in the current session.
+
+## Re‑running past queries
+
+History is more than a log; it is meant to be a starting point:
+
+- Click a history entry to re‑run the same statement against the current connection.
+- Optionally send a history entry back into a SQL editor window so you can tweak it before running.
+- Use this to build up a library of useful checks and diagnostics without saving separate files.
+
+Because history is tied to the active connection, sensitive or environment‑specific statements remain in the correct workspace.
+
+## Managing history
+
+Over time you may want to keep history manageable:
+
+- Clear entries that you no longer need to reduce clutter.
+- Rely on editor‑based scripts or version control for long‑term storage of important workflows.
+
+Query history is optimized for short‑ and medium‑term iteration, while backups and exports handle long‑term archiving of results and data.
+

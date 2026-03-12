@@ -1,0 +1,74 @@
+---
+title: "Workspace"
+description: "How to work inside a PoliteDB connection tab"
+---
+
+The **workspace** in PoliteDB is the environment you see after opening a connection profile in a tab. Each workspace is dedicated to a single database connection and gives you tools to explore schemas, run queries, and inspect data.
+
+This page walks through the main areas of the workspace and how they work together.
+
+## Layout overview
+
+When you open a connection, PoliteDB creates a new tab with a structured layout:
+
+- **Menu bar** along the top for workspace‑level actions (view modes, refresh, search, and more).
+- **Schema navigator** on the left for browsing databases, schemas, tables, and functions.
+- **Center content area** for SQL editors and table views.
+- **Optional right‑hand panel** for table size, structure details, and related metadata.
+- **Optional bottom pane** for query history, depending on your view mode.
+
+The layout is designed to keep your current query, results, and context visible without feeling cluttered.
+
+## Windows, tabs, and view modes
+
+Inside a workspace, you can open multiple **windows**, each representing either:
+
+- A **SQL editor** for writing and running queries.
+- A **table view** for browsing and filtering data from a specific table.
+
+These windows appear as tabs inside the center content area, so you can:
+
+- Switch between different queries and tables quickly.
+- Close windows you no longer need.
+- Reopen new SQL editors or tables as your workflow evolves.
+
+View modes let you choose how much of the navigator, metadata, and history you want on screen—for example, focusing on a large editor and results pane, or showing more side panels when exploring schemas.
+
+## Working with schemas and tables
+
+The schema navigator on the left helps you:
+
+- Discover which databases and schemas are available for the current connection.
+- Expand schemas to see their tables and other objects.
+- Search for tables by name when working in large databases.
+- Open a table in the main area with a single action.
+
+Once a table is open, the workspace can show:
+
+- Column definitions and constraints.
+- Basic size and row‑count information.
+- Data rows with filtering, sorting, and pagination.
+
+This makes it easy to move from a high‑level view of your schema down into specific tables and records.
+
+## Related feature guides
+
+Several workspace features have their own dedicated guides:
+
+- **SQL editor** – how to compose, run, and organize queries in the editor. See [SQL editor](/features/sql-editor).
+- **Query history** – how history is captured and how to reuse past statements. See [Query history](/features/query-history).
+- **Datagrid** – how to read and navigate table data. See [Datagrid](/features/datagrid).
+- **Filtering** – how to narrow down rows and focus on the data you care about. See [Filtering](/features/filtering).
+- **Backup and restore** – how to back up and restore data from within the app. See [Backup and restore](/features/backup-restore).
+- **Keyboard shortcuts** – how to work quickly without leaving the keyboard. See [Keyboard shortcuts](/features/keyboard-shortcuts).
+
+## Managing changes and safety
+
+PoliteDB aims to make powerful operations safer by:
+
+- Separating read‑only browsing from destructive operations like drop or truncate.
+- Confirming high‑impact actions with dialogs so you do not accidentally run them.
+- Providing visibility into what changes are about to be applied, especially for schema‑level operations.
+
+Combined with the Keychain and connection profile model, this gives you a workspace that is both productive and respectful of your production data.
+

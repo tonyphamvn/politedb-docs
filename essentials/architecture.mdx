@@ -1,0 +1,73 @@
+---
+title: "Architecture"
+description: "How the main concepts in PoliteDB fit together"
+---
+
+This page describes the **high‑level architecture** of PoliteDB from a user and product perspective, without going into source code or implementation details.
+
+PoliteDB is a **native desktop application for macOS** that connects to multiple types of databases through a consistent interface. At a high level, you can think about it as three main layers: how it connects to databases, how it manages your data and credentials locally, and how it presents everything in the user interface.
+
+## Core building blocks
+
+PoliteDB is organized around a few core ideas:
+
+- **Connections** – saved profiles that describe how to reach a specific database (engine, host, port, authentication, SSL/SSH, and tags).
+- **Workspaces** – tabbed environments you open from a connection profile to run queries, explore schemas, and inspect data.
+- **Keychain** – a secure store, integrated with macOS, that keeps passwords and keys encrypted and under your control.
+- **History** – a record of your recent queries so you can revisit, tweak, and re‑run them quickly.
+
+Everything you do in PoliteDB—opening a new connection, running a query, exploring tables—builds on top of these concepts.
+
+## Supported databases
+
+PoliteDB is designed as a multi‑database client. From a user’s perspective, the primary engines it focuses on are:
+
+- **PostgreSQL**
+- **MySQL**
+- **Redis**
+
+You can keep profiles for multiple engines side by side and open workspaces for any of them in separate tabs. The interface stays consistent, even though the underlying database capabilities differ.
+
+## How the app works at a high level
+
+When you open PoliteDB:
+
+1. You land on the **home screen**, where you can see and manage your saved connection profiles.
+2. From there you can:
+   - Create new profiles for any supported engine.
+   - Edit existing profiles (for example, to update credentials or hostnames).
+   - Organize profiles with names and tags.
+3. Opening a profile launches a **workspace tab** dedicated to that database.
+
+Inside each workspace, PoliteDB:
+
+- Establishes a connection to your database using the details from the selected profile.
+- Loads metadata about your schemas, tables, and other database objects.
+- Keeps a local history of the queries you run from that workspace.
+
+PoliteDB is **local‑first** and does not send your database contents or connection details to any external service.
+
+## Security model
+
+Security is built around a few principles:
+
+- **Keychain integration**: On macOS, passwords and other secrets are stored in the system Keychain, not in plain text files.
+- **Separation of profiles and secrets**: Connection profiles can reference items stored in the Keychain instead of embedding credentials directly.
+- **Local‑only connections**: Connections are made directly from your machine to your databases; PoliteDB does not proxy or relay your traffic.
+
+You remain in control of where your databases live and how they are accessed.
+
+## UI overview
+
+From a user perspective, the interface is divided into:
+
+- A **home screen**:
+  - Shows your connection profiles.
+  - Lets you create, edit, duplicate, and remove profiles.
+  - Provides access to the keychain area for managing stored secrets.
+- One or more **workspace tabs**:
+  - Each tab is tied to a single connection profile.
+  - Contains a menu bar, schema navigator, SQL editors, results, and optional side panels for metadata and history.
+
+This structure makes it easy to switch between different databases and projects without losing context.
+

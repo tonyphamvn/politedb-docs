@@ -1,0 +1,38 @@
+---
+title: "Filtering"
+description: "Focus on the rows that matter in PoliteDB"
+---
+
+Filtering helps you narrow down the data shown in the datagrid so you can focus on the rows that matter most.
+
+You can combine simple conditions and quick searches to answer questions without writing new SQL every time.
+
+## Applying filters
+
+From a datagrid view you can typically:
+
+- Add conditions on one or more columns (for example, equals, contains, greater than).
+- Combine multiple filters to refine your result set.
+- Temporarily disable or clear filters when you want to see the unfiltered data again.
+
+Filters work on top of the current query or base table, so you can start broad and then narrow down interactively.
+
+## Searching within results
+
+In addition to column‑level filters, you can use a lightweight search:
+
+- Type into a search box to quickly highlight or restrict rows that match your text.
+- Use it to find IDs, names, or other distinct values without leaving the current page.
+
+Search is especially useful when you know a specific value you are looking for but do not want to edit the underlying query.
+
+## Best practices
+
+To get the most from filtering:
+
+- Use SQL to define the broad shape of your dataset, then use filters for last‑mile refinement.
+- Keep filters simple and composable so they remain easy to understand.
+- Clear filters when switching tasks to avoid confusion about why certain rows are hidden.
+
+Filtering is intended as a fast, interactive layer on top of your queries rather than a replacement for precise SQL.
+

@@ -1,0 +1,59 @@
+---
+title: "Connections"
+description: "How PoliteDB lets you define and manage database connections"
+---
+
+Connections in PoliteDB are stored as **profiles** that you manage from the home screen and open into **workspaces** inside tabs.
+
+This page explains how to think about connection profiles, what information they contain, and how they behave in the app.
+
+## What is a connection profile?
+
+A connection profile is a saved configuration that tells PoliteDB how to reach a particular database. Each profile typically includes:
+
+- **Engine** – for example PostgreSQL, MySQL or Redis.
+- **Location** – host, port, and database name (where applicable).
+- **Authentication** – username and how to authenticate (password, key, or other methods).
+- **Security** – SSL/TLS options, SSH tunnels, and related settings.
+- **Metadata** – labels, descriptions, and tags so you can organize profiles by project or environment.
+
+Profiles are reusable: you can open and close them as needed, and they remain available the next time you launch PoliteDB.
+
+## Creating and editing profiles
+
+From the **Connections** view on the home screen, you can:
+
+- Click **New** to create a fresh profile.
+- Choose the database engine you want to connect to.
+- Fill in the connection details and test them.
+- Save the profile so it appears in your list of connections.
+
+You can edit an existing profile at any time to update credentials, hosts, ports, or tags. Edits do not affect any already‑running sessions until you reconnect.
+
+## Opening a connection workspace
+
+When you open a profile, PoliteDB launches a **workspace tab** dedicated to that connection:
+
+- The tab shows the profile name and engine so you can tell connections apart at a glance.
+- Within the tab you can:
+  - Browse schemas and tables.
+  - Open SQL editors.
+  - View and export data.
+  - Inspect query history.
+
+You can open multiple profiles at once—each in its own tab—and switch between them without losing context.
+
+## Connections and the keychain
+
+PoliteDB is designed so that your profiles and your secrets can be managed separately:
+
+- Profiles keep track of which database to connect to and how.
+- Sensitive values such as passwords and keys are stored in the **Keychain** (on macOS) rather than inside the profile itself.
+
+This means you can:
+
+- Safely keep profiles under version control or share them with teammates (where appropriate) without exposing raw credentials.
+- Rotate secrets in the keychain without rebuilding every profile from scratch.
+
+For more on how secrets are stored and managed, see the [Keychain guide](/essentials/keychain).
+

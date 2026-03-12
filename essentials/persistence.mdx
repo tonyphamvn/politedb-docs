@@ -1,0 +1,58 @@
+---
+title: "Persistence"
+description: "What PoliteDB remembers between sessions"
+---
+
+PoliteDB persists several types of data so that your environment feels familiar and consistent every time you reopen the app.
+
+This page explains what is saved, how it behaves, and what is intentionally kept ephemeral.
+
+## Layout and preferences
+
+PoliteDB remembers key aspects of your interface so you can pick up where you left off:
+
+- Which screens or connection tabs were active.
+- Window layout and splitter positions.
+- Selected view modes (for example, whether history or side panels are visible).
+- Core preferences that should survive restarts.
+
+When you reopen the app, these settings are restored so the home screen and workspaces look the way you last left them.
+
+## Connection profiles
+
+Connection profiles are stored persistently so you do not need to re‑enter details each time:
+
+- User‑provided metadata such as labels and tags.
+- Connection parameters (engine, host, port, database name).
+- References to items in the keychain for sensitive values like passwords or keys.
+
+Profiles live entirely on your machine; PoliteDB does not sync them to a cloud service.
+
+## SQL drafts and history
+
+PoliteDB keeps track of queries you are working on and those you have already run:
+
+- **Drafts**:
+  - SQL editors periodically save unsent work so you can recover after an unexpected crash or restart.
+  - Old drafts may be cleaned up over time to avoid unbounded growth.
+- **History**:
+  - Executed SQL is recorded in a per‑connection history.
+  - You can revisit, tweak, and re‑run previous statements from within the workspace.
+
+Drafts and history are stored locally and are scoped to your machine and user account.
+
+## Table data and metadata
+
+To keep the app responsive, PoliteDB temporarily caches:
+
+- Table data that you have recently loaded in a workspace.
+- Schema and metadata for the active connection.
+
+These caches:
+
+- Are scoped to the lifetime of a connection tab.
+- Can be refreshed at any time (for example, after schema changes).
+- Are not intended as a long‑term storage mechanism.
+
+By limiting long‑term persistence for table data and metadata, PoliteDB reduces the risk of showing stale results across app versions or after significant database changes.
+

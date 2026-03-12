@@ -1,0 +1,38 @@
+---
+title: "Keychain"
+description: "Managing secrets and secure items in PoliteDB"
+---
+
+The **Keychain** in PoliteDB is a dedicated area for managing secrets and other secure items that relate to your database connections.
+
+On macOS, PoliteDB integrates with the **native system Keychain** so that passwords, SSH keys, and other credentials are encrypted and stored by the operating system instead of in plain text files. PoliteDB follows a local‑first, offline‑friendly model and does not send your connection details to any external service.
+
+## Where you use the keychain
+
+From the home screen you can switch between:
+
+- A view of your **connection profiles**.
+- A view of your **keychain items**, which lists stored secrets and related metadata.
+
+Both views share the same search and filtering tools, so you can quickly find the profiles or secrets you need.
+
+When you create or edit a connection profile, PoliteDB lets you link fields such as passwords or keys to items stored in the keychain instead of typing or pasting them directly into the profile.
+
+## How connections reference keychain items
+
+Connection profiles can reference secrets stored in the keychain instead of inlining credentials.
+
+In practice this means:
+
+- Sensitive values are stored once in the keychain and reused across profiles where needed.
+- Profiles keep a reference to the keychain entry, not the raw secret itself.
+- When you open a connection, PoliteDB looks up the relevant secret in the keychain and uses it to authenticate.
+
+This separation keeps the keychain as the **single source of truth** for sensitive values, while connection profiles remain relatively safe to inspect and share.
+
+## Recommended practices
+
+- Store **passwords and API keys** in the keychain, not directly in profiles.
+- Use **tags or descriptive names** on keychain items to organize them by environment, team, or purpose.
+- Periodically rotate secrets in the keychain and update referencing profiles as needed.
+

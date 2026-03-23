@@ -8,8 +8,7 @@ PoliteDB is a **modern, native database client** focused on **fast navigation**,
 It is designed to feel at home on macOS, with secure credential storage via the system **Keychain**, an offline‑friendly architecture, and a clean UI that stays out of your way while you work.
 
 <Callout>
-  This documentation explains what you can do with PoliteDB, how the main concepts fit together, and
-  where to look next as you start using it day to day.
+  This documentation explains what you can do with PoliteDB, how the main concepts fit together, and where to look next as you start using it day to day.
 </Callout>
 
 ## What you can do with PoliteDB
@@ -23,11 +22,16 @@ It is designed to feel at home on macOS, with secure credential storage via the 
 
 ## Supported databases
 
-PoliteDB is built for teams that work with more than one engine. From a single interface you can connect to:
+PoliteDB is built for teams that work with more than one engine. From a single interface, you can connect to:
 
 - PostgreSQL
 - MySQL
+- MariaDB
 - Redis
+- Oracle
+- SqlServer
+- MongoDB
+- SQLite
 
 The exact feature set can vary slightly per engine, but the overall workflow—profiles, workspaces, editors, and history—remains the same.
 
@@ -47,12 +51,15 @@ You do not need to understand the internals to be productive, but if you’re cu
   <Card title="Get started quickly" icon="rocket" href="/quickstart">
     Download PoliteDB, connect to a database, and run your first query.
   </Card>
+
   <Card title="Understand connections" icon="plug" href="/essentials/connections">
     Learn how connection profiles are modeled and how they map to runtime connections.
   </Card>
+
   <Card title="Use the keychain" icon="key" href="/essentials/keychain">
     See how PoliteDB uses the macOS Keychain to store your secrets securely.
   </Card>
+
   <Card title="Dive into the workspace" icon="database" href="/essentials/workspace">
     Explore how windows, SQL editors, history, and schema navigation fit together.
   </Card>

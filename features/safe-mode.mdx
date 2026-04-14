@@ -1,57 +1,88 @@
 ---
 title: "Safe Mode"
-description: "Reduce the risk of accidental destructive changes in PoliteDB"
+description: "Protect high-risk SQL actions with confirmations, lock mode, and Touch ID"
 ---
 
-**Safe Mode** is a way to use PoliteDB more cautiously, especially when you are connected to sensitive or production databases.
+PoliteDB includes **query safety modes** to help you avoid accidental changes on important databases.
 
-When Safe Mode is enabled, the app treats potentially destructive operations more carefully and encourages you to double‑check what you are about to do.
+You can switch modes from the lock icon in the connection toolbar. The icon color also reflects the active mode:
 
-## What Safe Mode is for
+- Unlocked icon: default mode.
+- Red lock icon: lock mode.
+- Green lock icon: safe mode.
 
-Safe Mode is designed to:
+## Safety modes
 
-- Make it harder to accidentally run destructive statements (for example, dropping tables or truncating data).
-- Encourage you to review schema changes and bulk updates before they are applied.
-- Provide extra confirmation steps when you are performing high‑impact actions.
+PoliteDB currently supports three modes. Each mode is designed for a different level of risk:
 
-It is especially useful when:
+- **Default mode**
+  - Shows a confirmation prompt before sending SQL queries from the SQL editor.
+  - Keeps editing features available in table views.
+  - Best for normal development where you still want a quick "are you sure?" step.
+- **Safe mode**: requires Touch ID authentication before:
+  - Sending SQL queries.
+  - Saving table edits or schema changes from the table UI.
+  - Best when you still need write access, but want strong operator verification.
+- **Lock mode**
+  - Blocks mutating SQL statements.
+  - Disables editing actions in table-oriented workflows.
+  - Best for read-only sessions, audits, and incident investigations.
 
-- Working against production or business‑critical databases.
-- Pairing or reviewing work where multiple people may be running queries from the same environment.
-- Exploring unfamiliar schemas where the impact of a change is not yet clear.
+## How safe mode behaves
 
-## Typical behavior
+When you use **Safe mode**:
 
-In Safe Mode, you can expect PoliteDB to:
+- Every SQL run requires Touch ID confirmation.
+- Every save action for pending table changes requires Touch ID confirmation.
+- If Touch ID authentication fails or is canceled, PoliteDB cancels the action and shows an error.
 
-- Highlight or clearly label destructive actions in menus and dialogs.
-- Ask for explicit confirmation before running operations that:
-  - Drop or truncate tables.
-  - Rewrite large portions of data.
-  - Apply structural changes to schemas.
-- Encourage you to review generated SQL or summaries of changes before they are executed.
+This behavior gives you a hard verification checkpoint before high-impact actions. You can still move fast, but sensitive operations require explicit biometric approval.
 
-Safe Mode is not about blocking every write; it is about slowing you down slightly for operations that are hard or impossible to undo.
+## How lock mode differs from safe mode
 
-## Enabling and disabling Safe Mode
+Safe mode and lock mode are often used in similar environments, but they solve different needs:
 
-Safe Mode is typically **off by default** so you can work quickly in development and test environments.
+- **Safe mode** allows writes, but requires Touch ID before execution.
+- **Lock mode** prevents write operations entirely in protected paths.
 
-You can turn it on when you need extra protection, for example:
+Choose safe mode when a trusted operator should be able to make controlled changes. Choose lock mode when the entire session must remain read-only.
 
-- Before connecting to a production database.
-- At the start of a session where you know you will be reviewing or auditing changes.
+## Scope and persistence
 
-Once enabled, Safe Mode applies across the relevant parts of the app until you explicitly turn it off again.
+Safety mode is stored **by profile**, not just by the current tab.
 
-## Best practices
+In practice, this means:
 
-To get the most value from Safe Mode:
+- If you switch one tab to Safe mode, other tabs from the same profile use the same mode.
+- Your chosen mode is restored for that profile in future sessions.
+- When you reconnect with the same profile later, PoliteDB keeps your last selected safety mode.
 
-- Treat it as a standard part of your workflow for production and regulated environments.
-- Combine it with backups and query history so you can verify and, when necessary, recover from changes.
-- Leave it off in ephemeral or local environments where you are intentionally moving fast and the cost of mistakes is low.
+This helps teams maintain consistent safety posture for specific environments, such as production, staging, or shared QA databases.
 
-Safe Mode is one layer in a broader safety story that also includes permissions, backups, and careful review of generated SQL.
+## Recommended usage
+
+Use each mode intentionally based on environment risk:
+
+- **Default mode**
+  - Local development.
+  - Short-lived test databases.
+  - Fast iteration when mistakes are easy to recover.
+- **Safe mode**
+  - Production-like environments where writes are allowed.
+  - Team-shared databases with higher operational risk.
+  - Sessions where schema changes or data fixes may be necessary, but should be tightly controlled.
+- **Lock mode**
+  - Read-only data exploration.
+  - Review sessions and demos.
+  - Compliance, audit, or incident triage workflows.
+
+## Operational guidance
+
+Safety modes are one layer of protection. For complete safety, combine them with:
+
+- Least-privilege database roles.
+- Reliable backup and restore procedures.
+- Query review and change management practices.
+
+Safety mode reduces accidental actions in the client. It does not replace database-level permissions, transaction strategy, or backup policy.
 

@@ -25,6 +25,7 @@
           "essentials/workspace",
           "features/data-grid",
           "features/sql-editor",
+          "features/ai-assistant",
           "features/query-history",
           "features/filtering",
           "features/backup-restore",

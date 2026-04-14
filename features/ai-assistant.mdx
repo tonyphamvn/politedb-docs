@@ -1,0 +1,74 @@
+---
+title: "AI Assistant"
+description: "Ask questions, generate SQL, and get database guidance with local AI in PoliteDB"
+---
+
+The **AI Assistant** in PoliteDB helps you explore data, write SQL faster, and understand query results without leaving your connection workspace.
+
+It is designed as a practical copilot for day-to-day database work, not as a replacement for your review process.
+
+![PoliteDB AI assistant panel](/images/ai-assistant.png)
+
+## What you can do with AI Assistant
+
+You can use AI Assistant to:
+
+- Ask data questions in natural language.
+- Generate SQL from intent (for example, "show top customers by revenue last month").
+- Get explanations for existing SQL statements.
+- Refine draft queries before you run them.
+
+The assistant panel keeps the conversation close to your schema and current connection context so answers stay relevant.
+
+## Where it runs
+
+PoliteDB runs AI Assistant using a **local AI runtime**.
+
+In practice, this means:
+
+- The app starts a local AI server when needed.
+- If the model is missing, PoliteDB prompts you to download it.
+- The assistant can show runtime phases such as ready, starting, missing, or error.
+- You can start, stop, and refresh runtime state from assistant settings.
+
+Because the runtime is local-first, first-time startup can take longer while the model is prepared or downloaded.
+
+## How SQL help works
+
+AI Assistant is optimized for SQL tasks:
+
+- It uses available schema metadata (tables and columns) to shape suggestions.
+- It can suggest read queries for exploration and write queries for operational tasks.
+- You can take generated SQL and insert it into your SQL editor flow for validation and execution.
+
+Always review generated SQL before running it, especially on production data.
+
+## Connection context and safety
+
+Assistant chats are scoped to your active workspace context, including:
+
+- Active connection and engine.
+- Current schema selection.
+- Loaded table and column metadata.
+
+AI Assistant helps you author SQL, but execution safety still follows your workspace controls such as query safety mode, lock mode, and confirmation steps.
+
+## Configuration
+
+You can configure AI Assistant with:
+
+- **Endpoint** for your local AI-compatible server.
+- **Model** used for responses and SQL generation.
+- Runtime controls to start or stop local AI services.
+
+These settings are stored locally for your environment so your preferred setup is reused.
+
+## Best practices
+
+- Use clear prompts that include filters, time range, and expected output columns.
+- Ask for a read-only version first, then request write variants if needed.
+- Validate generated SQL with `EXPLAIN` or safe sampling queries before full execution.
+- Keep safety modes enabled for high-risk environments.
+
+AI Assistant is most effective when combined with your domain knowledge, query history, and existing database safeguards.
+
